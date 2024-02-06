@@ -44,7 +44,7 @@ defmodule Commanded.EventStore.Adapters.Spear.EventPublisher do
         {:noreply, %State{state | subscription: subscription}}
 
       {:error, reason} ->
-        Logger.warn(
+        Logger.warning(
           "Cannot subscribe to #{stream_name} (reason: #{reason}). Will retry in #{@reconnect_delay} ms."
         )
 
@@ -69,7 +69,7 @@ defmodule Commanded.EventStore.Adapters.Spear.EventPublisher do
 
   @impl GenServer
   def handle_info({:eos, _, reason}, state) do
-    Logger.warn(
+    Logger.warning(
       "Subscription to EventStore is down (reason: #{reason}). Will retry in #{@reconnect_delay} ms."
     )
 

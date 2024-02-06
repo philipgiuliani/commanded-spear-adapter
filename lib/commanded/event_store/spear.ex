@@ -254,7 +254,7 @@ defmodule Commanded.EventStore.Adapters.Spear do
         :ok
 
       {:error, %Spear.ExpectationViolation{} = detail} ->
-        Logger.warn(fn ->
+        Logger.warning(fn ->
           "Spear event store wrong expected version " <>
             inspect(expected_version) <> " due to: " <> inspect(detail)
         end)
