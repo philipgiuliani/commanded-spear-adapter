@@ -130,7 +130,7 @@ defmodule Commanded.EventStore.Adapters.Spear.Mapper do
       else
         try do
           serialize_metadata(event, serializer)
-        catch
+        rescue
           _ ->
             ""
         end
