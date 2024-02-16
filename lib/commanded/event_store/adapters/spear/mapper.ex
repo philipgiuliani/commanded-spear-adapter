@@ -128,7 +128,12 @@ defmodule Commanded.EventStore.Adapters.Spear.Mapper do
       if event_type == "$>" do
         ""
       else
-        serialize_metadata(event, serializer)
+        try do
+          serialize_metadata(event, serializer)
+        catch
+          _ ->
+            ""
+        end
       end
 
     event_type
